@@ -1,0 +1,36 @@
+@font-face{
+    font-family: "YesevaOne";
+    src: url("../fonts/yeseva-one/YesevaOne-Regular_v2.otf");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Gentium-Basic";
+    src: url("../fonts/Gentium-Basic/GenBasB.ttf");
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "Lato";
+    src: url("../fonts/lato/Lato-Regular.ttf");
+    font-weight: 400; 
+}
+
+@font-face {
+    font-family: "OpenSans";
+    src: url("../fonts/open-sans/OpenSans-Bold.ttf");
+    font-weight: 700px;    
+}
+
+@font-face {
+    font-family: "OpenSans";
+    src: url("../fonts/open-sans/OpenSans-Italic.ttf");
+    font-weight: 400px;
+    font-style: italic;    
+}
+@font-face {
+    font-family: "OpenSans";
+    src: url("../fonts/open-sans/OpenSans-Regular.ttf");
+    font-weight: 400px;
+    font-style: normal;    
+}
