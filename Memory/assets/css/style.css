@@ -1,0 +1,319 @@
+@import "normalize.css";
+
+/* bounce in animation  */
+@keyframes bounceInDown {
+  from,
+  60%,
+  75%,
+  90%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -3000px, 0);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translate3d(0, 25px, 0);
+  }
+
+  75% {
+    transform: translate3d(0, -10px, 0);
+  }
+
+  90% {
+    transform: translate3d(0, 5px, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* bonce out animation */
+@keyframes bounceOut {
+  20% {
+    transform: scale3d(0.9, 0.9, 0.9);
+  }
+
+  50%,
+  55% {
+    opacity: 1;
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+}
+
+@keyframes bounceOutUp {
+  20% {
+    transform: translate3d(0, -10px, 0);
+  }
+
+  40%,
+  45% {
+    opacity: 1;
+    transform: translate3d(0, 20px, 0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(0, -2000px, 0);
+  }
+}
+
+body {
+    font-size: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100%;
+    background: moccasin;
+}
+
+/* entire container, keeps perspective */
+  main {
+    width: 100%;
+    height: 100%;
+  }
+
+  .controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 70px;
+  }
+
+
+  .deck {
+    width: 900px;
+    margin: 0 auto;
+    height: 100%;
+  }
+
+  .button {
+    margin: 5px;
+    border: 1px solid burlywood;
+    cursor: pointer;
+    margin: 1rem;
+    user-select: none;
+    padding: 5px;
+    width: auto;
+    font-size: 1.6rem;
+    text-align: center;
+  }
+
+  .sample {
+    width: 30px;
+  }
+
+  .restart {
+    background: orangered;
+  }
+
+  .moves {
+    font-size: 2rem;
+    border: 1px solid burlywood;
+    cursor: pointer;
+    margin: 1rem;
+  }
+
+   .timer {
+    font-size: 2rem;
+    border: 1px solid burlywood;
+    cursor: pointer;
+    margin: 1rem;
+  }
+
+  .flip-container {
+    perspective: 1000px;
+    float: left;
+    margin: 10px;
+    cursor: pointer;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 2s, visibility 2s linear 2s;
+  }
+      /* flip the pane when hovered */
+  /* 	.flip-container:hover .flipper, .flip-container.hover .flipper {
+          transform: rotateY(180deg);
+      } */
+  .flip .flipper, .flip-container.hover .flipper{
+    transform: rotateY(180deg);
+  }
+  
+  .flip-container, .front, .back {
+    width: 200px;
+    height: 200px;
+  }
+
+  .hide {
+    visibility: hidden;
+    opacity: 0;
+    transition-delay: 0s;
+  }
+  
+  /* flip speed goes here */
+  .flipper {
+    transition: 0.6s;
+    transform-style: preserve-3d;
+    position: relative;
+  }
+  
+  /* hide back of pane during swap */
+  .front, .back {
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  /* front pane, placed above back */
+  .front {
+    z-index: 2;
+    /* for firefox 31 */
+    transform: rotateY(0deg);
+  }
+
+  .bg-0{
+    background-image: url('../patterns/0.gif'); 
+    background-size: cover;
+  }
+  .bg-1{
+    background-image: url('../patterns/2.png'); 
+    
+  }
+  .bg-2{
+    background-image: url('../patterns/3.png'); 
+  }
+  
+  /* back, initially hidden pane */
+  .back {
+    font-size : 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotateY(180deg);
+    background: #80BFFF;
+  }
+  
+  /* modal rules */
+  .modal-rules {
+    font-size: 2rem;
+    background: white;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0%;
+    left: 0%;
+    padding: 30px;
+    display: none;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    z-index: 1;
+  }
+  
+  .modal-rules h2 {
+    text-align: center;
+  }
+
+  .modal-rules p {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .modal-rules form {
+    width: 80%;
+    margin: 0 auto;
+    font-size: 1.6rem;
+  }
+
+  .modal-rules fieldset {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .modal-rules input {
+    width: 200px;
+    padding: 5px;
+    margin: 5px;
+  }
+
+  .modal-rules input[type="submit"] {
+    cursor: pointer;
+    background: ghostwhite;
+  }
+
+  .modal-rules input[type="submit"]:hover {
+    cursor: pointer;
+    background: black;
+    color: ghostwhite;
+  }
+
+  .modal-score {
+    width: 60%;
+    height: 30%;
+    text-align: center;
+    font-size: 2rem;
+    background: white;
+    position: fixed;
+    z-index: 1;
+    top: 25%;
+    left: 20%;
+    display: none;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+  }
+
+
+  /* modal winner */
+  .modal-congrats {
+    width: 60%;
+    height: 30%;
+    text-align: center;
+    font-size: 2rem;
+    background: white;
+    position: fixed;
+    z-index: 1;
+    top: 25%;
+    left: 20%;
+    display: none;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+  }
+
+  .show {
+    display: block;
+    animation-name: bounceInDown;
+  }
+
+  .hide-modal {
+    animation-name: bounceOutUp ;
+  }
+
+  .close {
+    font-size: 30px;
+    position: absolute;
+    top: 0px;
+    right: 5px;
+    cursor: pointer;
+    border-radius: 50%;
+    border: none;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    outline:none;
+    background: none;
+    color: gray;
+}
+
+.close:hover {
+  color: red;
+}
