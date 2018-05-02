@@ -40,13 +40,13 @@ class Card {
     isMatched(someCard){
         return this.icon === someCard.icon; 
     }
-    // Show card ???
+    // Show card 
     show() {
         const divContainer = document.getElementById(this.id);
         divContainer.classList.add('flip');
         this.status = CardState.OPEN;
     }
-    // Close card ???
+    // Close card 
     close() {
         const divContainer = document.getElementById(this.id);
         divContainer.classList.remove('flip');
@@ -87,7 +87,7 @@ var shuffle = function shuffle(array) {
     return array;
 }
 
-// array of icons fas
+// function make array of icons fas
 var makeIconsArray = function makeIconsArray(count) {
     const iconsArray = [
         'fa-android',
@@ -115,16 +115,32 @@ var makeIconsArray = function makeIconsArray(count) {
     return shuffle(iconsArray.slice(0, count).concat(cloneSymbolsArray)); // x2
 }
 
+// store to localStorage
 var storeScore = function (fullName, score) {
     let oldScore = JSON.parse(localStorage.getItem("score")) || [];
     oldScore.push([fullName, score]);
     oldScore.sort((a, b) => b[1] - a[1]);
-    let result = JSON.stringify(oldScore.slice(0, 9));
+    let result = JSON.stringify(oldScore.slice(0, 10));
     localStorage.setItem("score", result);
 }
 
+// get from localStorage
 var getScore = function () {
-    return JSON.parse(localStorage.getItem("score"));
+    const table = document.querySelector(".score-list");
+    const scoreArr = JSON.parse(localStorage.getItem("score"));
+    table.innerHTML = "";
+    table.innerHTML = `<thead>
+                            <tr>
+                                <td>№</td>
+                                <td>Full Name</td>
+                                <td>Score</td>
+                            </tr>
+                        </thead>`
+    scoreArr.forEach( (el, index) => {
+        let tr = document.createElement("tr");
+        tr.innerHTML = `<td>${index + 1}</td><td>${el[0]}</td><td>${el[1]}</td>`
+        table.appendChild(tr);
+    })
 }
 
 //*******CLASS DECK */
@@ -323,15 +339,11 @@ class Controller {
         }, false);
 
         scoreBoardClose.addEventListener("click", function() {
-            console.log("work here");
             that.hideScore();
         }, false);
     }
 
     registerPlayer() {
-        console.log(
-            "e boy "
-        );
         const  firstName = document.querySelector("#firstName");
         const  lastName = document.querySelector("#lastName");
         const  email = document.querySelector("#email");
@@ -354,14 +366,10 @@ class Controller {
         this.moves++;
     }
 
-    startNewGame() {
-        //// add
-    }
-
     resetGame() {
         this.timer.stop();
         const timerElement = document.querySelector(".timer");  
-        timerElement.innerHTML = "0 sec";
+        timerElement.innerHTML = "00 sec";
         this.timer = new Timer(timerElement);
         this.deck.reset();
         this.deck.draw();
@@ -409,7 +417,6 @@ class Controller {
     showRules() {
         const rulesModal = document.querySelector(".modal-rules");
         rulesModal.classList.remove("hide-modal"); 
-        
     }
 
     //add show congrats
@@ -435,18 +442,18 @@ class Controller {
 
     showScore() {
         const scoreBoard = document.querySelector(".modal-score");
-        
+        getScore();
         scoreBoard.classList.remove("hide-modal"); 
         scoreBoard.classList.add("show"); 
         
     }
 }
 
-
 // handler for CARDS
 
 function clickHandler(event) {
-    const div = event.target.parentElement.parentElement;
+    // const div = event.target.parentElement.parentElement;
+    const div = event.target.closest(".flip-container");
     const card = controller.deck.cards[div.id];
 
     if (card.isClicable() && controller.openCards.length !== 2) {
@@ -484,15 +491,10 @@ function clickHandler(event) {
                     const score = Math.floor((controller.deck.dimension / controller.moves ) * 1000) / 10;
                     controller.showCongrats(controller.timer.getDuration(), controller.moves, score);
                     storeScore(controller.player.getfullName(), score);
-                    console.log(controller.timer.getElapsedTime());
-                    console.log(controller.moves);
-                    console.log(`VIKA ${controller.player.getfullName()} score ${score}`);
                 }
             }
         }
-    } else {
-        console.log("card not clickable");
-    }
+    } 
 }
 
 const controller = new Controller(clickHandler);

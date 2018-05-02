@@ -34,23 +34,6 @@
 }
 
 /* bonce out animation */
-@keyframes bounceOut {
-  20% {
-    transform: scale3d(0.9, 0.9, 0.9);
-  }
-
-  50%,
-  55% {
-    opacity: 1;
-    transform: scale3d(1.1, 1.1, 1.1);
-  }
-
-  to {
-    opacity: 0;
-    transform: scale3d(0.3, 0.3, 0.3);
-  }
-}
-
 @keyframes bounceOutUp {
   20% {
     transform: translate3d(0, -10px, 0);
@@ -75,7 +58,6 @@ body {
     background: moccasin;
 }
 
-/* entire container, keeps perspective */
   main {
     width: 100%;
     height: 100%;
@@ -97,7 +79,7 @@ body {
 
   .button {
     margin: 5px;
-    border: 1px solid burlywood;
+    border: 1px solid black;
     cursor: pointer;
     margin: 1rem;
     user-select: none;
@@ -105,10 +87,23 @@ body {
     width: auto;
     font-size: 1.6rem;
     text-align: center;
+    background: ghostwhite;
+  }
+
+  .button:hover {
+    color: ghostwhite;
+    background: black;
   }
 
   .sample {
     width: 30px;
+    margin: 1rem;
+    padding: 5px;
+    border: 1px solid black;
+  }
+
+  .sample:hover {
+    cursor: pointer;
   }
 
   .restart {
@@ -138,10 +133,7 @@ body {
     visibility: visible;
     transition: opacity 2s, visibility 2s linear 2s;
   }
-      /* flip the pane when hovered */
-  /* 	.flip-container:hover .flipper, .flip-container.hover .flipper {
-          transform: rotateY(180deg);
-      } */
+
   .flip .flipper, .flip-container.hover .flipper{
     transform: rotateY(180deg);
   }
@@ -188,7 +180,8 @@ body {
     
   }
   .bg-2{
-    background-image: url('../patterns/3.png'); 
+    background-image: url('../patterns/3.jpg'); 
+    background-size: cover;
   }
   
   /* back, initially hidden pane */
@@ -201,9 +194,8 @@ body {
     background: #80BFFF;
   }
   
-  /* modal rules */
   .modal-rules {
-    font-size: 2rem;
+    font-size: 1.6rem;
     background: white;
     width: 100%;
     height: 100%;
@@ -218,7 +210,7 @@ body {
     z-index: 1;
   }
   
-  .modal-rules h2 {
+  .modal-rules h1 {
     text-align: center;
   }
 
@@ -260,8 +252,10 @@ body {
   .modal-score {
     width: 60%;
     height: 30%;
+    min-height: 380px;
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.6rem;
+    padding: 5px;
     background: white;
     position: fixed;
     z-index: 1;
@@ -272,11 +266,28 @@ body {
     animation-fill-mode: both;
   }
 
+  .modal-score table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+   }
+
+   .modal-score table, th, td  {
+    border: 1px solid black;
+   }
+
+  .modal-score thead {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    background: black;
+  }
 
   /* modal winner */
   .modal-congrats {
     width: 60%;
     height: 30%;
+    min-height: 350px;
     text-align: center;
     font-size: 2rem;
     background: white;
@@ -299,10 +310,10 @@ body {
   }
 
   .close {
-    font-size: 30px;
+    font-size: 4rem;
     position: absolute;
-    top: 0px;
-    right: 5px;
+    top: 10px;
+    right: 20px;
     cursor: pointer;
     border-radius: 50%;
     border: none;
