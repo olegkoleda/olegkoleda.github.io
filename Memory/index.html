@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="./assets/patterns/favicon.ico" type="image/ico" sizes="16x16">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
     <script defer src="assets/js/script.js"></script>
     <title>Memory Game</title>
 </head>
 <body>
+    
     <!-- Rules -->
     <div class="modal-rules show">
-            <h2>Welcome into the memory game</h2>
+            <h1>Welcome into the memory game</h1>
             <p>The memory game is a basic matching game to test the player's memory. In a deck of paired cards, the player needs to match each pair to win the game.</p>
             <h3>Rules:</h3>
                     <ol>
@@ -42,12 +44,12 @@
                 <span class="button player">player 1</span>
                 <span class="button restart">Restart</span>
                 <span class="moves">0</span>
-                <span class="timer">0 sec</span>
+                <span class="timer">00 sec</span>
             </div>
             <div class="controls">
-                <span class="button sample bg-0"></span>
-                <span class="button sample bg-1"></span>
-                <span class="button sample bg-2"></span>
+                <span class="sample bg-0"></span>
+                <span class="sample bg-1"></span>
+                <span class="sample bg-2"></span>
                 <span class="button easy">Easy</span>
                 <span class="button medium">Medium</span>
                 <span class="button hard">Hard</span>
@@ -63,9 +65,15 @@
         <!-- Score Board -->
         <div class="modal-score">
                 <button id="close-score" class="close">&times;</button>
-                <ol>
-
-                </ol>
+                <table class="score-list">
+                    <thead>
+                        <tr>
+                            <td>№</td>
+                            <td>Full Name</td>
+                            <td>Score</td>
+                        </tr>
+                    </thead>
+                </table>
             </div>
 </body>
 </html>

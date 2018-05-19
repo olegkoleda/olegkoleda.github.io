@@ -1,0 +1,546 @@
+ *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  html, body {
+    font-size: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #69747c;
+    background: white;
+  }
+
+  body {
+    height: 100vh;
+    display: grid;
+    grid-gap: 50px 25px;
+    grid-template: 
+        "header header header header" 150px
+        ". main aside ." 1fr / 1fr 2.5fr 1.2fr 1fr;
+  }
+
+  main {
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  aside {
+    grid-area: aside;
+  }
+
+/*------------------ header---------------- */
+  header {
+    grid-area: header;
+    display: grid;
+    grid-template: 
+        ". logo ." 90px
+        "menu menu menu" 60px / 1fr 3fr 1fr;
+  }
+
+  .logo {
+      grid-area: logo;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      user-select: none;
+  }
+
+  .logo a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #6290b4;
+    text-transform: uppercase;
+    font-family: TrendSansOne, Arial, Helvetica, sans-serif;
+    font-size: 3.8rem;
+    font-weight: 400;
+  }
+
+  .main-menu {
+    grid-area: menu;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 60px;
+    grid-gap: 100px;
+  }
+
+  .main-menu ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    list-style: none;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    align-items: center;
+  }
+
+  .main-menu a {
+    font-size: 1.8rem;
+    color: white;
+    text-transform: uppercase;
+  }
+
+  .main-menu li {
+    position: relative;
+  }
+
+  .main-menu a:hover::after, .main-menu a:focus::after {
+    content: "\f0d7";
+    position: absolute;
+    font-family: FontAwesome;
+    color: #c6defa;
+    bottom: -178%;
+    left: 35%;
+    font-size: 3rem;
+  }
+
+  .main-menu a:hover::before, .main-menu a:focus::before {
+    content: "\f0d7";
+    position: absolute;
+    font-family: FontAwesome;
+    color: #6b9ad0;
+    bottom: -33px;
+    left: 35%;
+    font-size: 3rem;
+    z-index: 1;
+  }
+
+  nav  {
+    background-color: #6b9ad0;
+    border-bottom: 4px solid #c6defa;
+    user-select: none;
+}
+
+  nav .main-menu {
+    grid-column-start: 2;
+    grid-column-end: 3;
+  }
+
+  .menu-info, .menu-about, .menu-tag, .menu-mobile-icon {
+    display: none;
+    background-color: #7ca7d9;
+    border-bottom: 4px solid #c6defa;
+    font-size: 2rem;
+    text-align: center;
+    line-height: 60px;
+    color: #608dc1;
+    border-top: 1px solid #6b9ad0;
+  }
+
+  .menu-info:hover, .menu-about:hover, .menu-tag:hover {
+    color: white;
+    background: #6b9ad0;
+  }
+ 
+  .mobile-menu {
+    display: none;
+  }
+
+  /* ----------------Aside------------ */
+
+  aside h2 {
+    margin-top: 0;
+    font-family: Cantarell, Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    color: #6290b4;
+    display: block;
+    border-bottom: 5px solid #6794b7;
+    padding-bottom: 2px;
+  }
+
+  aside p {
+    text-align: justify;
+    font-size: 1.2rem;
+    margin-top: 15px;
+  }
+
+  aside section {
+    margin-bottom: 35px;
+  }
+
+  .icon-aside {
+    color: white;
+    background: #6290b4;
+    padding: 2px 13px 8px 13px;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+  }
+
+  .tag {
+    display: flex;
+  }
+
+  .tags a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    margin: 5px 0 5px 5px;
+    padding: 5px 13px;
+    background: #6794b7;
+    font-size: 12px;
+    position: relative;
+  }
+
+  .tags a::after {
+    position: absolute;
+    content: "\f111";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    top: 6px;
+    right: -5px;
+    font-size: 1rem;
+  
+  }
+    
+  .triangle {
+    margin: 5px;
+    margin-left: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 12px 0 12px 15px;
+    border-color: transparent transparent transparent #6794b7;
+  }
+
+  .tags a:hover {
+    color: #671c18;
+  }
+
+
+  /* -----------articles in main-------- */
+  article {
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto;
+    grid-template-areas: 
+        "post-image post-image"
+        "article-header article-header" 
+        "article-data article-social" 
+        "article-text article-text";
+  }
+
+  .article-image {
+    grid-area: post-image;
+  }
+
+  article h3 {
+    grid-area: article-header;
+    font-size: 2rem;
+    font-family: 'Arial Narrow', arial;
+    padding: 10px 0;
+    border-bottom: 1px solid #e2e5e8;
+  }
+
+  .article-meta-data {
+    grid-area: article-data;
+    padding: 10px 0;
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .social-buttons {
+    grid-area: article-social;
+    padding: 10px 0;
+    font-size: 1.2rem;
+    justify-self: right;
+  }
+  
+  article p {
+    grid-area: article-text;
+    border-top: 1px solid #e2e5e8;
+    font-size: 1.2rem;
+    text-align: justify;
+    padding: 5px 0;
+  }
+
+  article img {
+    width: 100%;
+    height: auto;
+  }
+
+  .social-buttons .button {
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 3px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #d1dae3;
+  }
+
+  .social-buttons span {
+    margin-left: 3px;
+  }
+
+  .social-buttons .facebook:hover {
+    background-color: #3c5a98;
+}
+
+  .social-buttons .google:hover {
+    background-color: #c25234;
+  }
+
+  .social-buttons .twitter:hover {
+    background-color: #00aced;
+  }
+
+  .social-buttons .vk:hover {
+    background-color: #48729e;
+  }
+
+  .social-buttons .yandex:hover {
+    background-color: #d83933;
+  }
+
+/* ------------------TABLET----------------- */
+  @media only screen and (min-width : 768px) and (max-width : 1175px) {
+    body {
+        grid-template: 
+        "header header header" 150px
+        ". aside ." 1fr
+        ". main main" 1fr / 6% auto 6%;
+        grid-gap: 30px 25px;
+    }
+    
+    .info, .about {
+        display: none;
+    }
+
+    .tags {
+        justify-content: center;
+    }
+    
+    aside section {
+        margin: 0;  
+    }
+
+    /* header */
+
+    header {
+        grid-area: header;
+        display: grid;
+        grid-template: 
+            ". logo ." 90px
+            "menu-about menu menu-info" 60px / 6% auto 6%;
+      }
+
+    .menu-info {
+        display: block;
+        grid-area: menu-info;
+    }
+
+    .main-menu {
+        display: grid;
+        grid-template: none;
+    }
+
+    .main-menu ul {
+        grid-column-start: 1;
+    }
+
+    .menu-about {
+        grid-area: menu-about;
+        display: block;
+    }
+
+    /* article tablet */
+    article {
+        grid-column-gap: 15px;
+        grid-template: 
+            "post-image article-social" auto
+            "article-header ." auto
+            "article-data  ." auto 
+            "article-text ."auto / auto;
+    }
+
+    .article-meta-data {
+        justify-content: flex-start;
+    }
+
+    .article-meta-data span {
+        margin-right: 20px;
+    }
+
+    .social-buttons {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-end;
+    }
+
+    .social-buttons a {
+        margin-bottom: 10px;
+    }
+
+    .social-buttons .facebook {
+        background-color: #3c5a98;
+    }
+
+    .social-buttons .google {
+        background-color: #c25234;
+    }
+
+    .social-buttons .twitter {
+        background-color: #00aced;
+    }
+
+    .social-buttons .vk {
+        background-color: #48729e;
+    }
+
+    .social-buttons .yandex {
+        background-color: #d83933;
+    }
+  }
+/* ------------MOBILE------------ */
+  @media only screen  and (max-width : 767px) {
+    body {
+        grid-template: 
+        "header" 100px
+        "main" 1fr / 1fr;
+        grid-gap: 0;
+    }
+
+    aside {
+        display: none;
+    }
+
+    main {
+        margin: 20px;
+    }
+
+    /* header -mobile */
+
+    header   {
+        grid-template: 
+            "logo" 60px
+            "mobile-menu" 40px / auto;
+    }
+
+    .logo a {
+        font-size: 3rem;
+    }
+
+    nav {
+        border-bottom: none;
+    }
+
+    .main-menu  {
+        display: none;
+    }
+
+    .menu-info, .menu-about, .menu-tag, .menu-mobile-icon {
+      display: block;
+      border: none;
+      padding: 7px 0;
+      margin-right: 5px;
+      line-height: normal;
+      width: 40px;
+    }
+
+    .tablet {
+        display: none;
+    }
+
+    .mobile-menu {
+        grid-area: mobile-menu;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .mobile-menu a:last-child {
+        margin-left: calc(100% - 180px);
+        background-color: #6b9ad0;
+        color: #9cbce1;
+    }
+
+    .mobile-menu a:last-child:hover {
+        color: white;
+        background: #6b9ad0;
+    }
+    /* -------article mobile-------- */
+    article {
+        grid-column-gap: 0;
+        grid-template: 
+            "post-image" auto
+            "article-header" auto
+            "article-data" auto 
+            "article-text" 
+            "article-social" auto / auto;
+    }   
+
+    article h3 {
+        text-align: center;
+        font-size: 1.8rem;
+    }
+
+    .article-meta-data {
+        justify-content: space-around;
+    }
+
+    .social-buttons {
+        justify-self: normal;
+        display: flex;
+        justify-content: space-evenly;
+        font-size: 1.6rem;
+    }
+
+    /* -----buttons colors------- */
+    .social-buttons .facebook {
+        background-color: #3c5a98;
+    }
+
+    .social-buttons .google {
+        background-color: #c25234;
+    }
+
+    .social-buttons .twitter {
+        background-color: #00aced;
+    }
+
+    .social-buttons .vk {
+        background-color: #48729e;
+    }
+
+    .social-buttons .yandex {
+        background-color: #d83933;
+    }
+    
+  }
+
+/* Preloader Spinner */
+  .spinner { 
+      animation-name: spin; 
+      animation-duration: 1000ms; 
+      animation-iteration-count: infinite; 
+      animation-timing-function: linear; 
+    } 
+    @keyframes spin { 
+        from { 
+            transform:rotate(360deg);
+        } 
+        to { 
+            transform:rotate(0deg); 
+        } 
+    }
