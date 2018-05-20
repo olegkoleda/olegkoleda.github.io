@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/favicon.ico" sizes="16x16">
+    <script defer src="assets/js/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+    <title>CSS Quick Draw Scoreboard</title>
+</head>
+<body>
+    <section class="controls">
+        <form class="controls-buttons">
+            <label for="demo-data">RS Demo Score</label>
+            <input type="radio" name="demo-data" id="demo-data">
+            <label for="score-data">RS Score</label>
+            <input type="radio" name="score-data" id="score-data">
+            <a href="#visualization"> Line Chart</a>
+        </form>
+    </section>
+    <section class="scoreboard">
+        <table id="table-score" class="scoreboard-table">
+        </table>
+    </section>
+    <section class="visualization" id="visualization">
+        <canvas id="scoreChart"></canvas>
+    </section>
+</body>
+</html>
